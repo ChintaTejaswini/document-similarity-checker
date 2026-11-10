@@ -169,7 +169,7 @@ header = st.container(key="glass_header")
 with header:
     st.markdown(
         '<div id="top"></div>'
-        '<div class="eyebrow">Linear Algebra &amp; Vector Calculus, mini project 8</div>'
+        '<div class="eyebrow">Linear Algebra &amp; Vector Calculus</div>'
         '<div class="h1">Document Similarity &amp; Dimensionality Analyzer</div>'
         '<div class="lead">Represent documents numerically, compare their similarities, '
         'and reduce them to a 2D picture.</div>',
