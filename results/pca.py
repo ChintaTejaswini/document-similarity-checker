@@ -4,25 +4,25 @@ def center_matrix(A):
     return A-mean
 
 def compute_covariance(X):
-    n = X.shape[0]
-    return (np.dot(X.T,X))/(n-1)
+    n = X.shape[0]              # gives no of rows
+    return (np.dot(X.T,X))/(n-1)            # C = (XT - X)/(n-1)
 
 def compute_eigen(C):
     eigenvalues, eigenvectors = np.linalg.eigh(C)
-    idx = np.argsort(eigenvalues)[::-1]
-    eigenvalues = eigenvalues[idx]
+    idx = np.argsort(eigenvalues)[::-1]         # sort in descending order
+    eigenvalues = eigenvalues[idx]         # calculates eigen values from covariance matrix
     eigenvectors = eigenvectors[:,idx]
     return eigenvalues, eigenvectors
 
-def explained_variance(eigenvalues):
+def explained_variance(eigenvalues):   # explained_variance() — tells us how much information each principal component captures.
     total = np.sum(eigenvalues)
     if total == 0:
         return np.zeros_like(eigenvalues)
     variance = (eigenvalues / total ) * 100
     return variance
 
-def project_data(X,eigenvectors):
-    V2 = eigenvectors[:,:2]
+def project_data(X,eigenvectors):  # project_data() — actually transforms our data into fewer dimensions.
+    V2 = eigenvectors[:,:2]  # keeps the first two eigenvectors (PC1 and PC2) and multiplies the centred data by them.
     Z2 = np.dot(X,V2)
     return Z2
 
@@ -49,3 +49,11 @@ def compute_eigen_dual(X):
     eigenvalues = np.zeros(m)
     eigenvalues[:len(lam)] = lam[:m]
     return eigenvalues, V
+
+    """
+    It builds the small n * n matrix XXᵀ/(n-1) instead of the huge m * m matrix.
+    It finds that small matrixs eigenpairs.
+    It drops the near-zero eigenvalues.
+    It converts each small eigenvector u into a real eigenvector with v = Xᵀu / √((n-1)λ).
+    It pads the eigenvalues with zeros up to length m.
+    """

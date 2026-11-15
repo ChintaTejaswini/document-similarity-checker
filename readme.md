@@ -20,7 +20,7 @@ The project demonstrates how mathematical concepts can be connected to build a c
 - **Cosine Similarity:** Calculate similarity between documents using vector norms and inner products.
 - **Similarity Heatmap:** Visualize relationships between documents.
 - **Principal Component Analysis (PCA):** Reduce high-dimensional document vectors into two dimensions.
-- **Interactive Visualizations:** Explore mathematical results through interactive charts.
+- **Interactive Visualizations:** Explore mathematical results through interactive charts.cd
 - **PDF Report Generation:** Export analysis results, tables, charts and interpretations.
 - **Pixel Cat Assistant:** An interactive assistant that helps explain the computed results.
 - **Custom UI:** A pixel-art inspired interface with light and dark modes.

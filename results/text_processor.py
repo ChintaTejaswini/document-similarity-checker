@@ -1,7 +1,8 @@
 # `clean_text()` – lowercase and remove punctuation.
-# `tokenize()` – split text into individual words.
+# `tokenize()` – split text into individual words and return as a list.
 # `build_vocabulary()` – collect unique words.
 # `build_feature_matrix()` – count each vocabulary word in every document.
+
 import string
 from collections import Counter
 def clean_text(text):
@@ -14,8 +15,8 @@ def tokenize(text):
     words = text.split()
     return words
 
-def build_vocab(doc):
-    vocab = []
+def build_vocab(doc):           # vocab = [] – Stores unique words in their original discovery order.
+    vocab = []                      # seen = set() – Keeps track of words already encountered.
     seen = set()              # same order as before, but O(1) look-ups so large collections stay fast
     for text in doc:
         for word in text:
@@ -26,7 +27,7 @@ def build_vocab(doc):
 
 def build_feature_matrix(doc,vocab):
     feat_mat = []
-    for text in doc:
+    for text in doc:                        # counts frequency of words in each docs
         counts = Counter(text)            # one pass per document instead of text.count() per word
         feat_mat.append([counts[word] for word in vocab])
     return feat_mat
